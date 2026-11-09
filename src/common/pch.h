@@ -6,9 +6,12 @@
 // 各 .cpp ファイルは、最初の #include でこのファイルを読み込むこと。
 #include <algorithm>
 #include <cmath>
+#include <cstdio>
 #include <cstdlib>
 #include <cstring>
 #include <fstream>
+#include <initializer_list>
+#include <memory>
 #include <random>
 #include <string>
 #include <utility>

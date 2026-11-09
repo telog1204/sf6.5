@@ -152,15 +152,45 @@
     </ClCompile>
     <ClCompile Include="..\src\windows\main_windows.cpp" />
     <ClCompile Include="..\src\windows\Platform_windows.cpp" />
-    <ClCompile Include="..\src\common\GameLoop.cpp" />
+    <ClCompile Include="..\src\common\Battle.cpp" />
+    <ClCompile Include="..\src\common\BattleDraw.cpp" />
+    <ClCompile Include="..\src\common\BattleScene.cpp" />
+    <ClCompile Include="..\src\common\CharacterData.cpp" />
+    <ClCompile Include="..\src\common\CpuBrain.cpp" />
+    <ClCompile Include="..\src\common\Fighter.cpp" />
     <ClCompile Include="..\src\common\Game.cpp" />
+    <ClCompile Include="..\src\common\GameLoop.cpp" />
+    <ClCompile Include="..\src\common\Input.cpp" />
+    <ClCompile Include="..\src\common\InputHistory.cpp" />
+    <ClCompile Include="..\src\common\MenuScenes.cpp" />
+    <ClCompile Include="..\src\common\Pose.cpp" />
+    <ClCompile Include="..\src\common\Sound.cpp" />
+    <ClCompile Include="..\src\common\Stage.cpp" />
+    <ClCompile Include="..\src\common\Text.cpp" />
+    <ClCompile Include="..\src\common\Ui.cpp" />
+    <ClCompile Include="..\src\common\VirtualPad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\common\pch.h" />
+    <ClInclude Include="..\src\common\Battle.h" />
+    <ClInclude Include="..\src\common\CharacterData.h" />
     <ClInclude Include="..\src\common\Config.h" />
+    <ClInclude Include="..\src\common\CpuBrain.h" />
+    <ClInclude Include="..\src\common\Fighter.h" />
     <ClInclude Include="..\src\common\Game.h" />
-    <ClInclude Include="..\src\common\Platform.h" />
     <ClInclude Include="..\src\common\GameLoop.h" />
+    <ClInclude Include="..\src\common\Input.h" />
+    <ClInclude Include="..\src\common\InputHistory.h" />
+    <ClInclude Include="..\src\common\MathUtil.h" />
+    <ClInclude Include="..\src\common\Pad.h" />
+    <ClInclude Include="..\src\common\Platform.h" />
+    <ClInclude Include="..\src\common\Pose.h" />
+    <ClInclude Include="..\src\common\Scene.h" />
+    <ClInclude Include="..\src\common\Sound.h" />
+    <ClInclude Include="..\src\common\Stage.h" />
+    <ClInclude Include="..\src\common\Text.h" />
+    <ClInclude Include="..\src\common\Ui.h" />
+    <ClInclude Include="..\src\common\VirtualPad.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
 </Project>

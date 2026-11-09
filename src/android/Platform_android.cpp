@@ -62,6 +62,41 @@ InputState Platform::PollInput() {
     return state;
 }
 
+std::vector<TouchPoint> Platform::GetTouches() {
+    std::vector<TouchPoint> touches;
+    const int count = GetTouchInputNum();
+    for (int i = 0; i < count; ++i) {
+        int touchX = 0;
+        int touchY = 0;
+        if (GetTouchInput(i, &touchX, &touchY) == -1) {
+            continue;
+        }
+        TouchPoint t;
+        t.x = (touchX - viewX) * Config::ScreenWidth / viewW;
+        t.y = (touchY - viewY) * Config::ScreenHeight / viewH;
+        touches.push_back(t);
+    }
+    return touches;
+}
+
+Pad Platform::ReadKeyboard(int set) {
+    // Android はキーボードを使わない（画面上の仮想パッドとゲームパッドで操作する）
+    (void)set;
+    return Pad();
+}
+
+bool Platform::UsesTouchControls() {
+    return true;
+}
+
+bool Platform::SupportsLocalVersus() {
+    return false;
+}
+
+bool Platform::CanQuitFromMenu() {
+    return false;
+}
+
 std::string Platform::SaveFilePath(const char* fileName) {
     // アプリ専用の内部ストレージに置く（アンインストールすると消える）
     TCHAR path[1024] = {};
