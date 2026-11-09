@@ -2,7 +2,9 @@
 
 sf6.5
 
-C++/DxLib で開発するゲームプロジェクトです。Windows 版と、スマホでテストプレイするための Android 版を、同じソースコードからビルドします。
+C++/DxLib で開発する、オリジナルの2D対戦格闘ゲーム「拳嵐（KENRAN）」です。キャラ2人（カザネ・ガンテツ）、CPU 戦（強さ3段階）・2人対戦・トレーニングを遊べます。遊び方・操作・技の一覧は [仕様書](docs/game-spec.md) にあります。
+
+Windows 版と、スマホでテストプレイするための Android 版を、同じソースコードからビルドします。
 
 ## フォルダ構成
 
@@ -16,7 +18,7 @@ C++/DxLib で開発するゲームプロジェクトです。Windows 版と、�
 | `assets/` | 画像・音声などの素材（両OSで同じものを使う） |
 | `docs/` | 仕様書 |
 
-OSによって違う処理は `src/common/Platform.h` の関数にまとめ、OS別のファイル（`Platform_windows.cpp` / `Platform_android.cpp`）で実装しています。ゲーム本体は `src/common/Game.cpp` の `Update`（入力と時間を進める）と `Draw`（描く）に書きます。
+OSによって違う処理は `src/common/Platform.h` の関数にまとめ、OS別のファイル（`Platform_windows.cpp` / `Platform_android.cpp`）で実装しています。ゲーム本体は `src/common/Game.cpp` の `Update`（1/60秒ずつ進める）と `Draw`（描く）から、各画面（`Scene`）を呼び出します。ファイルごとの役割は [仕様書](docs/game-spec.md) の「ソースの構成」を見てください。
 
 ## ファイルを追加するとき
 
@@ -36,15 +38,12 @@ OSによって違う処理は `src/common/Platform.h` の関数にまとめ、OS
 - 素材は `android/app/build.gradle` の設定で、リポジトリの `assets/` をそのまま apk に入れます。
 - 署名はテストプレイ専用のデバッグ鍵 `android/keystore/gametest.jks` を使います（[注意書き](android/keystore/README.md)）。
 
-### 操作（タッチ）
+### 操作
 
-| Windows | Android |
-|---|---|
-| 左クリック | タップ（指1本） |
-| 左ボタンを押したまま動かす | 指でなぞる |
-| 右クリック | 2本指でタップ |
+- Windows：キーボード（1P は WASD＋J/K/L/I、2P は矢印キー＋テンキー）とゲームパッド。メニューはマウスでも選べます。
+- Android：対戦中は画面の左下にスティック、右下に 弱・中・強・必殺 のボタン、上に「II」（ポーズ）が出ます。メニューはタップで選びます。2人対戦は Windows のみです。
 
-`Platform::PollInput()` が、どちらの操作も同じ形（位置・主な操作・2つ目の操作）で返します。
+キーボード・パッド・画面上の仮想パッドの入力は、`src/common/Input.cpp` で共通の形（`Pad`：方向＋ボタン）にまとめています。
 
 画面は 800×600（`src/common/Config.h`）のまま、端末の画面に縦横比を保って拡大表示します（横向き固定）。
 

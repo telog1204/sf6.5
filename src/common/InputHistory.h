@@ -20,6 +20,9 @@ public:
     // まだ使っていない押し下げが、直近 frames フレーム以内にあるか（止まっているフレームは数えない）
     bool Pressed(Btn b, int frames) const;
 
+    // 使用済みかどうかに関係なく、直近 frames フレーム以内に押し下げがあるか
+    bool PressedRaw(Btn b, int frames) const;
+
     // ここまでの押し下げを「使用済み」にする（技を出したときに呼び、同じ入力で2回技が出ないようにする）
     void Consume();
 

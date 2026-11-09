@@ -545,7 +545,8 @@ void Fighter::StepAttack(Battle& battle, bool controls) {
         }
     }
     // 弱攻撃の出始めに中攻撃が重なったら投げにする（弱＋中の同時押しの受付）
-    if (controls && (moveSlot == M_5L || moveSlot == M_2L) && moveFrame <= 2 && ThrowTechInput()) {
+    if (controls && (moveSlot == M_5L || moveSlot == M_2L) && moveFrame <= 2 && history.PressedRaw(BtnL, 4) &&
+        history.Pressed(BtnM, 3)) {
         StartMove(M_Throw, battle);
         return;
     }

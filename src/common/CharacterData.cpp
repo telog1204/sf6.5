@@ -28,8 +28,9 @@ namespace {
         m.hitstun = hitstun;
         m.blockstun = blockstun;
         m.hitstop = lv == LvLight ? 6 : (lv == LvMedium ? 8 : 10);
-        m.pushHit = lv == LvLight ? 4.5f : (lv == LvMedium ? 5.5f : 6.5f);
-        m.pushBlock = m.pushHit + 1.5f;
+        // 当てたときは連続技がつながるよう押しを小さく、ガードされたときは離れるよう大きくする
+        m.pushHit = lv == LvLight ? 2.8f : (lv == LvMedium ? 3.2f : 4.5f);
+        m.pushBlock = lv == LvLight ? 5.0f : (lv == LvMedium ? 6.0f : 7.0f);
         m.meterGain = lv == LvLight ? 20 : (lv == LvMedium ? 30 : 40);
         return m;
     }

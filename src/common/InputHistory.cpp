@@ -80,6 +80,20 @@ bool InputHistory::Pressed(Btn b, int frames) const {
     return false;
 }
 
+bool InputHistory::PressedRaw(Btn b, int frames) const {
+    int counted = 0;
+    for (int ago = 0; ago < count_; ++ago) {
+        const Entry& e = At(ago);
+        if ((e.pressed & (1u << b)) != 0) {
+            return true;
+        }
+        if (!e.frozen && ++counted >= frames) {
+            return false;
+        }
+    }
+    return false;
+}
+
 void InputHistory::Consume() {
     consumed_ = serial_;
 }

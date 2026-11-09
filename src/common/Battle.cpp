@@ -669,7 +669,7 @@ void Battle::ApplyHit(Fighter& a, Fighter& d, const MoveDef& m, int hitIndex, co
             d.pushOwner = projectile ? -1 : a.side;
         }
     }
-    d.flash = 4;
+    d.flash = m.hits > 1 ? 2 : 4;
     d.guarding = false;
     int stop = m.hitstop + (counter ? 4 : 0);
     if (d.knockedOut) {
